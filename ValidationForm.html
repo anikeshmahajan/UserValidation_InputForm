@@ -72,6 +72,13 @@
                 if(emailRegex.test(email.value)) emailError.textContent = "";
                 else emailError.textContent="Email is Incorrect";
             });
+            const tel = document.getElementById("tel");
+            const phoneError = document.querySelector(".phone-error");
+            tel.addEventListener('input',function(){
+                let phoneRegex = RegExp("^[0-9]{1,}[ ][1-9]{1}[0-9]{9}$");
+                if(phoneRegex.test(tel.value)) phoneError.textContent = "";
+                else phoneError.textContent="Phone No is Incorrect";
+            });
 
            
             const salary = document.querySelector('#salary');
