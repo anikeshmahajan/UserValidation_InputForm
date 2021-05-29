@@ -11,17 +11,17 @@
             <header class="headerContainer"><h1>HTML5 Form Input Fields</h1></header>
             <div>
                 <label for="text">Enter your Name: </label>
-                <input type="text" id="text" name="text" placeholder="Text Input...">
+                <input type="text" id="text" name="text" placeholder="Text Input..." required>
                 <error-output class="text-error" for="text"><p></error-output>
             </div>
             <div>
                 <label for="pass">Enter Password: </label>
-                <input type="password" id="pass" name="pass" placeholder="Password Input...">
+                <input type="password" id="pass" name="pass" placeholder="Password Input..." required>
                 <error-output class="pass-error" for="pass"></error-output>
             </div>
             <div>
                 <label for="email">Enter Email: </label>
-                <input type="email" id="email" name="email" placeholder="Email Input...">
+                <input type="email" id="email" name="email" placeholder="Email Input..." required>
                 <error-output class="email-error" for="email"></error-output>
             </div>
             <div>
@@ -34,7 +34,7 @@
             </div>
             <div>
                 <label for="tel">Enter Phone Number: </label>
-                <input type="tel" id="tel" name="tel" placeholder="Tel. No Input...">
+                <input type="tel" id="tel" name="tel" placeholder="Tel. No Input..." required>
                 <error-output class="phone-error" for="tel"></error-output>
             </div>
             <div>
@@ -80,6 +80,13 @@
                 else phoneError.textContent="Phone No is Incorrect";
             });
 
+            const pass = document.getElementById("pass");
+            const passError = document.querySelector(".pass-error");
+            pass.addEventListener("input",function(){
+                let passRegex = RegExp("^(?=.*\\d)(?=.*[A-Z])(?=.*\\W)(?!.*\\W\\w*\\W)(?!.*\\s).{8,}$");
+                if(passRegex.test(pass.value)) passError.textContent = "";
+                else passError.textContent = "Password is Incorrect"
+            });
            
             const salary = document.querySelector('#salary');
             const output = document.querySelector(".salary-output");
